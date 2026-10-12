@@ -71,7 +71,12 @@ jobs:
           cd /tmp/androidlibxraylite
           go mod tidy
 
-          gomobile bind -androidapi 24 -ldflags="-s -w" -o libv2ray.aar ./
+          # DÜZELTME: -checklinkname=0 eksikti. github.com/wlynxg/anet paketi Go'nun
+          # net paketindeki export edilmemiş net.zoneCache sembolüne go:linkname ile
+          # erişiyor; Go 1.23+ linker'ı bunu varsayılan olarak reddediyor
+          # ("invalid reference to net.zoneCache"). Kütüphanenin kendi README'si de
+          # tam olarak bu bayrakla derleniyor: -trimpath -ldflags='-s -w -buildid= -checklinkname=0'
+          gomobile bind -v -androidapi 24 -trimpath -ldflags="-s -w -buildid= -checklinkname=0" -o libv2ray.aar ./
 
           mkdir -p "$GITHUB_WORKSPACE/app/libs"
           cp libv2ray.aar "$GITHUB_WORKSPACE/app/libs/libv2ray.aar"
