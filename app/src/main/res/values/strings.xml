@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">İhvpn</string>
+    <string name="tile_label">İhvpn Bağlantı</string>
+
+    <string name="nav_home">Ana Sayfa</string>
+    <string name="nav_profiles">Profiller</string>
+    <string name="nav_settings">Ayarlar</string>
+    <string name="nav_logs">Loglar</string>
+
+    <string name="connect">Bağlan</string>
+    <string name="connecting">Bağlanıyor</string>
+    <string name="connected">Bağlandı</string>
+    <string name="disconnected">Bağlantı kesildi</string>
+    <string name="not_connected">Bağlı değil</string>
+
+    <string name="new_profile">Yeni Profil</string>
+    <string name="basic_info">Temel Bilgiler</string>
+    <string name="profile_name">Profil Adı</string>
+    <string name="type_label">Tür</string>
+    <string name="type_local">Yerel</string>
+    <string name="type_remote">Uzak/Abonelik</string>
+    <string name="subscription_url">Abonelik URL’si</string>
+    <string name="auto_update">Otomatik Güncelleme</string>
+    <string name="update_interval">Güncelleme Aralığı</string>
+    <string name="scan_qr">QR Kod Tara</string>
+    <string name="add_link">Link Ekle</string>
+    <string name="create_profile">Profil Oluştur</string>
+    <string name="cancel">İptal</string>
+    <string name="save">Kaydet</string>
+
+    <string name="add_option_subscription">Abonelik linki ekle</string>
+    <string name="add_option_qr">QR kod tara</string>
+    <string name="add_option_clipboard">Panodan link ekle</string>
+    <string name="add_option_open_with">İhvpn ile aç</string>
+    <string name="add_option_file">Dosyadan içe aktar</string>
+    <string name="add_option_manual">Manuel profil oluştur</string>
+
+    <string name="xhttp_unsupported_core">Bu profil xhttp taşıması kullanıyor.\nMevcut çekirdek xhttp desteklemiyor.\nXray-core ile devam edin veya bu profili atlayın.</string>
+
+    <string name="settings_kill_switch">Kill switch</string>
+    <string name="settings_dns_leak_protection">DNS sızıntı koruması</string>
+    <string name="settings_auto_reconnect">Otomatik yeniden bağlan</string>
+    <string name="settings_split_tunneling">Uygulama bazlı yönlendirme (Split tunneling)</string>
+    <string name="settings_app_lock">Uygulama kilidi</string>
+    <string name="settings_battery_hint">Bağlantı kararlılığı için pil optimizasyonundan muaf tutun</string>
+    <string name="settings_reset_counters">Trafik sayaçlarını sıfırla</string>
+    <string name="settings_backup_export">Yedeği dışa aktar</string>
+    <string name="settings_backup_import">Yedeği içe aktar</string>
+    <string name="settings_about">Hakkında</string>
+    <string name="settings_developer">Yapımcı: İshak Çiçekliyüz</string>
+
+    <string name="reset_counters_confirm_title">Sayaçları sıfırla</string>
+    <string name="reset_counters_confirm_body">Tüm profillerin toplam indirme/yükleme sayaçları sıfırlanacak. Bu işlem geri alınamaz.</string>
+</resources>

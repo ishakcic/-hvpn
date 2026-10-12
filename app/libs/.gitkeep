@@ -1,0 +1,4 @@
+Bu klasör libv2ray.aar için ayrıldı.
+CI onu otomatik üretip buraya koyar (bkz. .github/workflows/android-build.yml).
+Yerel Android Studio derlemesi için: CI'nin "libv2ray-aar" artifact'ini indirip
+bu klasöre libv2ray.aar olarak koy.
