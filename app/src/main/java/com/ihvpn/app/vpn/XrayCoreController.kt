@@ -100,12 +100,18 @@ class XrayCoreController(
 
     fun isRunning(): Boolean = controller?.isRunning ?: false
 
-    /** Ana Sayfa'daki gerçek indirme/yükleme sayaçları için. tag genelde "proxy" olur. */
+    /**
+     * Ana Sayfa'daki gerçek indirme/yükleme sayaçları için — GEÇİCİ OLARAK DEVRE DIŞI.
+     * Gerçek derlenen .aar'da `CoreController.QueryStats` diğer metodlardan (startLoop,
+     * stopLoop, isRunning — hepsi sorunsuz derlendi) farklı olarak "Unresolved reference"
+     * verdi; yani bu sürümde adı/imzası benim bildiğimden farklı. Tahminle tekrar
+     * hata riskine girmemek için, CI'daki yeni "libv2ray.aar gerçek API imzalarını
+     * yazdır" adımının çıktısını görene kadar bunu devre dışı bırakıyorum.
+     * Sahte sayı üretmemek için her zaman 0 dönüyor — Ana Sayfa bunu "—" olarak gösterir.
+     */
     fun queryStats(tag: String = "proxy"): TrafficSnapshot {
-        val c = controller ?: return TrafficSnapshot(0, 0)
-        val up = c.queryStats(tag, "uplink")
-        val down = c.queryStats(tag, "downlink")
-        return TrafficSnapshot(uplinkBytes = up, downlinkBytes = down)
+        // TODO: CI log'undaki gerçek imzaya göre c.??? (tag, "uplink"/"downlink") ile değiştir.
+        return TrafficSnapshot(0, 0)
     }
 
     /** Çalışan tünel üzerinden gerçek gecikme ölçümü. */

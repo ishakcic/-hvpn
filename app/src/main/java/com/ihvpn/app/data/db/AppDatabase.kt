@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase
 @Database(
     entities = [ProfileEntity::class, SubscriptionEntity::class],
     version = 1,
-    exportSchema = true
+    exportSchema = false // CI'da gereksiz "schema export directory" uyarısını önler
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun profileDao(): ProfileDao

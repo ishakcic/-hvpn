@@ -92,6 +92,33 @@ jobs:
           path: app/libs/libv2ray.aar
           if-no-files-found: error
 
+      # KALICI TEŞHİS ADIMI: Bundan sonra "unresolved reference" / "too many arguments"
+      # gibi hatalarla bir daha tahmin yürüterek uğraşmamak için, derlenen GERÇEK .aar'ın
+      # içindeki libv2ray sınıflarının tam, kesin Java imzalarını burada log'a yazdırıyoruz.
+      # Bir derleme hatası daha olursa, bu adımın çıktısını yapıştırman yeterli — orada
+      # yazan isim/imza neyse kod ona göre düzeltilir, bir daha dışarıdan kaynak aranmaz.
+      - name: libv2ray.aar gerçek API imzalarını yazdır (teşhis)
+        run: |
+          set -e
+          WORKDIR=/tmp/aar_inspect
+          mkdir -p "$WORKDIR"
+          cd "$WORKDIR"
+          unzip -o -q "$GITHUB_WORKSPACE/app/libs/libv2ray.aar" -d extracted
+          mkdir -p classes_unzipped
+          cd classes_unzipped
+          jar xf ../extracted/classes.jar
+          echo "========== libv2ray paketindeki sınıflar =========="
+          find . -path "*/libv2ray/*" -name "*.class" | sort
+          echo "========== Her sınıfın gerçek genel (public) API'si =========="
+          find . -path "*/libv2ray/*" -name "*.class" | sort | while read -r f; do
+            cls="${f#./}"
+            cls="${cls%.class}"
+            cls="${cls//\//.}"
+            echo "---- $cls ----"
+            javap -public "$cls" || true
+            echo
+          done
+
       - name: Gradle kur (sistem Gradle — wrapper repo'da yok)
         uses: gradle/actions/setup-gradle@v4
         with:

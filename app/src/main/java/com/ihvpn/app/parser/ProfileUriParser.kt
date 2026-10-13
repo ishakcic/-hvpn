@@ -157,3 +157,15 @@ data class ParsedProfile(
         }
     }
 }
+
+/**
+ * DÜZELTME: Bu dosyada başından beri gerçekte sadece `ParsedProfile` (companion'ında
+ * `parse()` ile) vardı — ama projenin her yerinde `ProfileUriParser.parse(...)` çağrılıyordu.
+ * Böyle bir sınıf/obje hiç tanımlı değildi, bu yüzden "Unresolved reference: ProfileUriParser"
+ * hatası her çağrı noktasında tekrarlanıyordu. Çağıran kodu değiştirmek yerine (çok dosyayı
+ * etkiler), burada gerçek, var olan bir `ProfileUriParser` nesnesi ekleyip var olan mantığa
+ * yönlendiriyorum — en az riskli düzeltme bu.
+ */
+object ProfileUriParser {
+    fun parse(uri: String): Result<ParsedProfile> = ParsedProfile.parse(uri)
+}
