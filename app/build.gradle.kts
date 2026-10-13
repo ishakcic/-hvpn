@@ -79,7 +79,7 @@ dependencies {
     implementation("androidx.work:work-runtime-ktx:2.9.1")
 
     // --- JSON (Hiddify/Xray config ayrıştırma, yedekleme) ---
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
 
     // --- Ağ (abonelik linki indirme) ---
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
